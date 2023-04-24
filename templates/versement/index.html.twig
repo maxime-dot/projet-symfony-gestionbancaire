@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Versements{% endblock %}
+
+{% block body %}
+             <div class="container mt-4">
+            <h1 class="d-flex justify-content-center">Liste des Versements</h1>
+                <a href="{{path('new_versement')}}" class="btn btn-primary">New Versement</a>
+                
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success mt-3">
+                        {{message}}
+                    </div>
+                {% endfor %}
+
+                        <table class="table table-hover mt-4">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Client ID</th>
+                                    <th scope="col">Montant versé</th>
+                                    <th scope="col">Date de Versement </th>
+                                    <th scope="col">Actions</th>
+
+
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for versmnt in versmnts %}
+                                    
+                                    <tr class="table-primary">
+                                    <th scope="row">{{ versmnt.id }}</th>
+                                    <td>{{ versmnt.clients}} [ id: {{ versmnt.clients.id}}]</td>
+                                    <td>{{ versmnt.MontantVerse }}Ar</td>
+                                    <td>{{ versmnt.dateVerse | date('d/m/Y') }}</td>
+
+                                    <td>
+                                   
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                        </table>
+    </div>
+{% endblock %}

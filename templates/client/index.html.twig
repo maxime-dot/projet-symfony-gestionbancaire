@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+            <h1 class="d-flex justify-content-center">Liste des Clients</h1>
+                <a href="{{path('new_client')}}" class="btn btn-primary">New Client</a>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success mt-3">
+                        {{message}}
+                    </div>
+                {% endfor %}
+
+                        <table class="table table-hover mt-4">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Solde</th>
+                                    <th scope="col">Actions </th>
+
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for client in clients %}
+                                    
+                                    <tr class="table-primary">
+                                    <th scope="row">{{ client.id }}</th>
+                                    <td>{{ client.name }}</td>
+                                    <td>{{ client.solde }}</td>
+                                    <td>
+                                    <a href="{{path('edit_client', { 'id': client.id})}}" class="btn btn-success">Modifier</a>
+                                    <a href="{{path('delete_client', { 'id': client.id})}}" class="btn btn-danger">Supprimer</a>
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                        </table>
+    </div>
+
+{% endblock %}

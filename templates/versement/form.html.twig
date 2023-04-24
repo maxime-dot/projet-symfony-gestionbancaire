@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body  %}
+    <div class="container mt-5">
+            <h1 class="d-flex justify-content-center text-light">Création d'un nouveau Versement</h1>
+        <div>
+            {{ form_start(form)}}
+
+            {{ form_row(form.clients)}}
+            {{ form_row(form.MontantVerse)}}
+            {{ form_row(form.dateVerse)}}
+
+
+    
+
+            {{ form_end(form)}}
+        
+        </div>
+    
+    </div>
+
+
+{% endblock  %}
+
+
